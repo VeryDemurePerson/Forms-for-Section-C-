@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const LandingPage = () => {
-  const router = useRouter(); //  Used for screen navigation with expo-router
+  const router = useRouter(); 
 
   return (
     <View style={styles.container}>
@@ -36,6 +36,15 @@ const LandingPage = () => {
         <FontAwesome5 name="user-tie" size={18} color="#fff" style={styles.icon} />
         <Text style={styles.buttonText}>Employee Form</Text>
       </TouchableOpacity>
+
+      {/*  Employee List Navigation Button */}
+      <TouchableOpacity
+  onPress={() => router.push("./employee-list")}
+  style={styles.button}
+>
+  <Text style={styles.buttonText}>View Employees</Text>
+</TouchableOpacity>
+
     </View>
   );
 };
@@ -45,9 +54,9 @@ export default LandingPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center", // Center content vertically
-    alignItems: "center", // Center content horizontally
-    backgroundColor: "#F0F4F8", // Light background
+    justifyContent: "center", 
+    alignItems: "center", 
+    backgroundColor: "#F0F4F8", 
   },
   title: {
     fontSize: 32,
@@ -56,7 +65,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   button: {
-    flexDirection: "row", //  Place icon and text in row
+    flexDirection: "row",
     backgroundColor: "#007BFF",
     paddingVertical: 15,
     paddingHorizontal: 30,
@@ -68,9 +77,9 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "600",
-    marginLeft: 8, // Space between icon and text
+    marginLeft: 8, 
   },
   icon: {
-    marginRight: 4, // Slight spacing between icon and text
+    marginRight: 4, 
   },
 });

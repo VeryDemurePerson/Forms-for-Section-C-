@@ -1,7 +1,9 @@
+import { addDoc, collection } from "firebase/firestore";
 import { Formik } from 'formik';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import * as Yup from 'yup';
+import { db } from './firebaseConfig';
 
 interface EmployeeFormValues {
   name: string;
@@ -32,10 +34,15 @@ const EmployeeForm = () => {
           position: '',
         }}
         validationSchema={EmployeeSchema}
-        onSubmit={(values, { resetForm }) => {
-          console.log(values);
-          alert('Form submitted!');
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            await addDoc(collection(db, "employees"), values);
+            alert('Form submitted & saved to Firebase!');
+            resetForm();
+          } catch (error) {
+            console.error("Error saving data: ", error);
+            alert('Error saving data');
+          }
         }}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
@@ -126,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4CAF50',
     padding: 14,
     borderRadius: 6,
-    alignItems: 'center',
+    alignItems: 'center', 
     marginTop: 12,
   },
   buttonText: {

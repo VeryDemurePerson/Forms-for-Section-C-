@@ -1,6 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
 import { Formik } from 'formik';
-import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import * as Yup from 'yup';
 import { db } from './firebaseConfig';
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#F6C618',
     padding: 14,
     borderRadius: 6,
     alignItems: 'center', 
